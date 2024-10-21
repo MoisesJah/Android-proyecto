@@ -1,0 +1,84 @@
+<div class="menu-container">
+  <button [routerLink]="['/usuarios']">Ir a Usuarios</button>
+  <button [routerLink]="['/temas']">Ir a Temas</button>
+  <button [routerLink]="['/compras']">Ir a Compras</button>
+  <button [routerLink]="['/cursos']">Ir a Cursos</button>
+  <button [routerLink]="['/detalle-compra']">Ir a Detalle Compras</button>
+</div>
+
+
+<div class="container d-flex flex-column align-items-center justify-content-center min-vh-100" style="background-color: #191b1d;">
+  <h1 class="text-center text-white">Lista de Cursos</h1>
+
+  <div class="mb-3 d-flex">
+    <input
+      type="text"
+      class="form-control me-2"
+      placeholder="Buscar por ID o nombre"
+      [(ngModel)]="busqueda"
+      (input)="filtrarCursos()"
+    />
+  </div>
+
+  <table class="table table-striped text-white">
+    <thead>
+      <tr>
+        <th>ID Curso</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>ID Categoría</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let curso of cursosFiltrados">
+        <td>{{ curso.idcurso }}</td>
+        <td>{{ curso.nombre }}</td>
+        <td>{{ curso.descripcion }}</td>
+        <td>{{ curso.precio | currency }}</td>
+        <td>{{ curso.idcategoria }}</td>
+        <td>
+          <img [src]="curso.img" alt="{{ curso.nombre }}" style="width: 100px; height: auto;" />
+        </td>
+        <td>
+          <button class="btn btn-warning" (click)="actualizarCurso(curso.idcurso)">Editar</button>
+          <button class="btn btn-danger" (click)="eliminarCurso(curso.idcurso)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Botón Registrar Curso alineado a la izquierda -->
+  <div class="align-self-start mb-3">
+    <button class="btn btn-primary" (click)="mostrarFormulario = !mostrarFormulario">
+      {{ mostrarFormulario ? 'Cancelar Registro' : 'Registrar Curso' }}
+    </button>
+  </div>
+
+  <div *ngIf="mostrarFormulario" class="mt-3">
+    <h2 class="text-center text-white">Registrar Nuevo Curso</h2>
+    <form (ngSubmit)="crearCurso()" class="w-50">
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="nuevoCurso.nombre" name="nombre" required />
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" placeholder="Descripción" [(ngModel)]="nuevoCurso.descripcion" name="descripcion" required></textarea>
+      </div>
+      <div class="mb-3">
+        <input type="number" class="form-control" placeholder="Precio" [(ngModel)]="nuevoCurso.precio" name="precio" required />
+      </div>
+      <div class="mb-3">
+        <input type="number" class="form-control" placeholder="ID Categoría" [(ngModel)]="nuevoCurso.idcategoria" name="idcategoria" required />
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="URL de Imagen" [(ngModel)]="nuevoCurso.img" name="img" required />
+      </div>
+      <button type="submit" class="btn btn-primary">Registrar</button>
+      <button type="button" class="btn btn-secondary" (click)="mostrarFormulario = false">Cerrar</button>
+    </form>
+  </div>
+
+  <p *ngIf="mensajeError" class="text-danger">{{ mensajeError }}</p>
+</div>

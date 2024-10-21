@@ -1,0 +1,43 @@
+<div class="menu-container">
+  <button [routerLink]="['/usuarios']">Ir a Usuarios</button>
+  <button [routerLink]="['/temas']">Ir a Temas</button>
+  <button [routerLink]="['/compras']">Ir a Compras</button>
+  <button [routerLink]="['/cursos']">Ir a Cursos</button>
+  <button [routerLink]="['/detalle-compra']">Ir a Detalle Compras</button>
+</div>
+
+
+<div class="container d-flex flex-column align-items-center justify-content-center min-vh-100" style="background-color: #191b1d;">
+  <h1 class="text-center text-white">Lista de Detalles de Compra</h1>
+
+  <div class="mb-3 d-flex">
+    <input
+      type="text"
+      class="form-control me-2"
+      placeholder="Buscar por ID Curso o Precio"
+      [(ngModel)]="busqueda"
+      (input)="filtrarDetalleCompras()"
+    />
+  </div>
+
+  <table class="table table-striped text-white">
+    <thead>
+      <tr>
+        <th>ID Detalle</th>
+        <th>ID Compra</th>
+        <th>ID Curso</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detalle of detalleComprasFiltrados">
+        <td>{{ detalle.iddetalle }}</td>
+        <td>{{ detalle.idcompra }}</td>
+        <td>{{ detalle.idcurso }}</td>
+        <td>{{ detalle.precio | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="mensajeError" class="text-danger">{{ mensajeError }}</p>
+</div>

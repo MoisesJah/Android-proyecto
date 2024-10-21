@@ -1,0 +1,8 @@
+{
+  "/usuario": {
+    "target": "https://codev-api-0w83.onrender.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

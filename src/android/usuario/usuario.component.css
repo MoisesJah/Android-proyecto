@@ -1,0 +1,115 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #343a40; /* El fondo oscuro para toda la página */
+  box-sizing: border-box; /* Asegura que los bordes y padding se incluyan en el tamaño total */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Asegura que los elementos no tengan márgenes ni padding inesperado */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura del viewport */
+  width: 100%;
+  color: white;
+}
+
+.table {
+  width: 80%; /* Ajusta el ancho de la tabla */
+  margin: auto; /* Centra la tabla horizontalmente */
+  border-collapse: collapse; /* Asegura que los bordes de las celdas se colapsen en uno solo */
+}
+
+.table th, .table td {
+  border: 1px solid white; /* Borde blanco para las celdas */
+  padding: 12px; /* Espaciado interno en las celdas */
+  text-align: left; /* Alineación del texto a la izquierda */
+}
+
+.table th {
+  background-color: #495057; /* Color de fondo para el encabezado */
+  font-weight: bold; /* Texto en negrita para el encabezado */
+}
+
+.table tr:nth-child(even) {
+  background-color: #343a40; /* Color de fondo para las filas pares */
+}
+
+.table tr:hover {
+  background-color: #6c757d; /* Color de fondo al pasar el mouse por encima */
+}
+
+form {
+  background-color: #495057; /* Color de fondo del formulario */
+  padding: 30px; /* Aumentar el espaciado interno alrededor del formulario */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+  color: white; /* Color del texto */
+  margin: auto; /* Centra el formulario horizontalmente */
+  max-width: 600px; /* Aumentar el ancho máximo del formulario */
+}
+
+.mb-3 {
+  margin-bottom: 20px; /* Aumentar el margen inferior de cada input para separarlos más */
+}
+
+.form-control, .form-select {
+  background-color: #343a40; /* Color de fondo para los inputs y selects */
+  border: 1px solid #6c757d; /* Borde gris para los inputs y selects */
+  color: white; /* Color del texto en los inputs y selects */
+  padding: 12px; /* Aumentar el padding interno de los inputs y selects */
+  border-radius: 5px; /* Bordes redondeados para inputs y selects */
+}
+
+.form-control::placeholder, .form-select option {
+  color: #adb5bd; /* Color de los placeholders y opciones del select */
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: #495057; /* Color de fondo al hacer foco */
+  border-color: #80bdff; /* Color del borde al hacer foco */
+  outline: none; /* Eliminar el borde de enfoque predeterminado */
+}
+
+.btn-primary {
+  background-color: #007bff; /* Color de fondo del botón */
+  border: none; /* Eliminar el borde del botón */
+  padding: 12px 25px; /* Aumentar el espaciado interno del botón */
+  border-radius: 5px; /* Bordes redondeados para el botón */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Color de fondo del botón al pasar el mouse */
+}
+
+.menu-container {
+  display: flex;
+  justify-content: space-around;
+  background-color: #191b1d; /* Mismo color de fondo que la página */
+  padding: 15px;
+  width: 100%;
+}
+
+.menu-container button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-container button:hover {
+  background-color: #007bff; /* Color azul típico */
+  color: white;
+  border-radius: 5px;
+}
